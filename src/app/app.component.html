@@ -1,0 +1,10 @@
+<app-header></app-header>
+
+<div class="container mr-top-12">
+    <div class="row">
+        <div class="col-md-12">
+            <app-recipes *ngIf="recipesActive"></app-recipes>
+            <app-shopping-list *ngIf="shoppingListActive"></app-shopping-list>
+        </div>
+    </div>
+</div>
