@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { RecipeService } from 'src/app/services/recipe.service';
 import { Recipe } from '../recipe.model';
 
 @Component({
@@ -8,21 +9,20 @@ import { Recipe } from '../recipe.model';
 })
 export class RecipeListComponent implements OnInit {
 
-  @Output() recipeDetailItem = new EventEmitter<Recipe>();
+  // @Output() recipeDetailItem = new EventEmitter<Recipe>();
 
-  recipes: Recipe[] = [
-    new Recipe('Test Recipe', 'This is a test recipe', 'https://www.cookipedia.co.uk/wiki/images/b/b3/Fish_stew_from_Tirana_recipe.jpg'),
-    new Recipe('Second Test Recipe', 'This is a second test recipe', 'https://www.cookipedia.co.uk/wiki/images/b/b3/Fish_stew_from_Tirana_recipe.jpg'),
-  ]
+  // recipes: Recipe[] = [
+  //   new Recipe('Test Recipe', 'This is a test recipe', 'https://www.cookipedia.co.uk/wiki/images/b/b3/Fish_stew_from_Tirana_recipe.jpg'),
+  //   new Recipe('Second Test Recipe', 'This is a second test recipe', 'https://www.cookipedia.co.uk/wiki/images/b/b3/Fish_stew_from_Tirana_recipe.jpg'),
+  // ]
 
-  constructor() { }
+  recipes: Recipe[] = [];
+
+  constructor(private recipeService: RecipeService) { }
 
   ngOnInit(): void {
+    this.recipes = this.recipeService.getRecipes();
   }
 
-  showRecipeDatail(recipe){
-    this.recipeDetailItem.emit(recipe);
-    
-  }
 
 }
